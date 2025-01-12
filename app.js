@@ -145,7 +145,10 @@ app.post('/generate-pass', async (req, res) => {
         passJson.backgroundColor = backgroundColor || DEFAULT_BACKGROUND_COLOR;
 
         // Update discount and service type
-        passJson.coupon.primaryFields[0].value = discount;
+        // passJson.coupon.primaryFields[0].value = discount;
+        passJson.coupon.primaryFields[0].value = discount.includes('%') ?
+            `${discount} OFF` :
+            `$${discount} OFF`;
         if (serviceType) {
             passJson.coupon.secondaryFields[0].value = serviceType;
         }
