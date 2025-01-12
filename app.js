@@ -4,7 +4,6 @@ const PKPass = require('passkit-generator').PKPass;
 const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
-const cors = require('cors');
 
 const app = express();
 
@@ -12,7 +11,14 @@ const app = express();
 app.use(express.json({ limit: '10mb' })); // Increased limit for base64 images
 app.use(express.urlencoded({ extended: true }));
 app.use('/passes', express.static('temp'));
-app.use(cors());
+
+// Enable CORS headers manually
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 
 // Default sky blue color
 const DEFAULT_BACKGROUND_COLOR = "rgb(41, 128, 185)";
