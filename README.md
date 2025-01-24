@@ -110,5 +110,5 @@ A Node.js application that generates custom Apple Wallet passes using the [passk
 - [alexandercerutti/passkit-generator](https://github.com/alexandercerutti/passkit-generator): The library used for pass generation.
 - [Sharp](https://github.com/lovell/sharp): High-performance Node.js image processing library.
 - [Express](https://expressjs.com/): Fast, unopinionated, minimalist web framework for Node.js.
-```
+
 
